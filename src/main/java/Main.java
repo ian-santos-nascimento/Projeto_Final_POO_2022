@@ -16,7 +16,6 @@ public class Main {
     private static final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
     public static void main(String[] args) {
-        System.out.println("Eu sou o seu primeiro programa.");
 
         //Criação do Recepcionista
         Recepcionista recepcionista = new Recepcionista("Joao", "218.939.070-23", new Date(1990, Calendar.SEPTEMBER, 22),
@@ -50,13 +49,16 @@ public class Main {
         Reserva reserva2 = realizarReserva(quartos, hospede2, 2);
         Reserva reserva3 = realizarReserva(quartos, hospede3, 3);
 
+        recepcionista.cobrarHospedagem(reserva1.calcuarTotalHospeadgem(reserva1.getQuarto(), reserva1.getInicioOcupacao(), reserva1.getFimOcupacao()), 1000);
+        recepcionista.cobrarHospedagem(reserva2.calcuarTotalHospeadgem(reserva2.getQuarto(), reserva2.getInicioOcupacao(), reserva2.getFimOcupacao()), 2000);
+        recepcionista.cobrarHospedagem(reserva3.calcuarTotalHospeadgem(reserva3.getQuarto(), reserva3.getInicioOcupacao(), reserva3.getFimOcupacao()), 4000);
+
 
     }
 
 
     public static Date transformarData(String data) {
         try {
-            System.out.println("[transformarData]" + df.parse(data));
             return df.parse(data);
         } catch (ParseException e) {
             return null;

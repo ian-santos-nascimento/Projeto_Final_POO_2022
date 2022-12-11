@@ -3,12 +3,13 @@ package model;
 import interfaces.ReservarQuarto;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class Reserva implements ReservarQuarto {
-
+    private static final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     private Quarto quarto;
 
     private Hospede hospedeResponsavel;
@@ -71,8 +72,11 @@ public class Reserva implements ReservarQuarto {
     @Override
     public Integer calcuarTotalHospeadgem(Quarto quarto, Date inicioOcupacao, Date fimOcupacao) {
         //Diaria:R$100,00 FIXO * qtdPessoasQuarto * diasTotais
-        Integer diasHospedados = inicioOcupacao.compareTo(fimOcupacao); //MUDAR ISSO QUE TA DANDO ERRADO
-        System.out.println(diasHospedados + "INICIO:"+ inicioOcupacao + "FIM:"+fimOcupacao);
+        Calendar inicio = Calendar.getInstance();
+        Calendar fim = Calendar.getInstance();
+        inicio.setTime(inicioOcupacao);
+        fim.setTime(fimOcupacao);
+        Integer diasHospedados = fim.get(Calendar.DAY_OF_YEAR) - inicio.get(Calendar.DAY_OF_YEAR); //MUDAR ISSO QUE TA DANDO ERRADO
         Integer diaria = 100;
         Integer qtdPessoasQuarto = quarto.getNumeroPessoas();
         return diasHospedados * diaria * qtdPessoasQuarto;

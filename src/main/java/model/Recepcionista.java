@@ -15,13 +15,13 @@ public class Recepcionista extends Funcionario implements Recepcionar {
 
     @Override
     public void darBoasVindas(String nomeHospede) {
-        System.out.println(String.format("Olá %s, seja bem vindo ao nosso hotel!", nomeHospede));
+        System.out.println(String.format("Ola %s, seja bem vindo ao nosso hotel!", nomeHospede));
     }
 
     @Override
-    public Float cobrarHospedagem(Float valorHospedagem, Float valorDado) {
-        Float troco = valorHospedagem - valorDado;
-        System.out.println(String.format("O valor da hospedagem é de R$%f então seu troco será %f", valorHospedagem, troco));
+    public Integer cobrarHospedagem(Integer valorHospedagem, Integer valorDado) {
+        Integer troco = valorDado - valorHospedagem;
+        System.out.println(String.format("O valor da hospedagem e de R$%d e voce deu %d entao seu troco sera %d", valorHospedagem,valorDado, troco));
         return troco;
     }
 
