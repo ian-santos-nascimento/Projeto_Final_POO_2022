@@ -1,0 +1,61 @@
+[
+Numero do Quarto = 101
+Ocupado = false
+Andar = 1
+Numero de Pessoas = 1
+, 
+Numero do Quarto = 102
+Ocupado = false
+Andar = 1
+Numero de Pessoas = 2
+, 
+Numero do Quarto = 103
+Ocupado = false
+Andar = 1
+Numero de Pessoas = 2
+, 
+Numero do Quarto = 104
+Ocupado = false
+Andar = 1
+Numero de Pessoas = 3
+, 
+Numero do Quarto = 201
+Ocupado = false
+Andar = 2
+Numero de Pessoas = 1
+, 
+Numero do Quarto = 202
+Ocupado = false
+Andar = 2
+Numero de Pessoas = 2
+, 
+Numero do Quarto = 203
+Ocupado = false
+Andar = 2
+Numero de Pessoas = 2
+, 
+Numero do Quarto = 204
+Ocupado = false
+Andar = 2
+Numero de Pessoas = 3
+, 
+Numero do Quarto = 301
+Ocupado = false
+Andar = 3
+Numero de Pessoas = 1
+, 
+Numero do Quarto = 302
+Ocupado = false
+Andar = 3
+Numero de Pessoas = 2
+, 
+Numero do Quarto = 303
+Ocupado = false
+Andar = 3
+Numero de Pessoas = 2
+, 
+Numero do Quarto = 304
+Ocupado = false
+Andar = 3
+Numero de Pessoas = 3
+]

@@ -83,7 +83,7 @@ public class Main {
             Reserva reserva = new Reserva(quarto, hospede, new Date(), calendar.getTime());
             Integer totalReserva = reserva.calcuarTotalHospeadgem(quarto, reserva.getInicioOcupacao(), reserva.getFimOcupacao());
             if (reserva.verificarDocumentos(hospede.getDataNascimento())) {
-                System.out.println("Reserva Realizada! Quarto numero:" + quarto.getNumeroQuarto() + "- o total será: R$:" + totalReserva);
+                System.out.println("Reserva Realizada! Quarto numero:" + quarto.getNumeroQuarto() + " O total da Reserva sera: R$:" + totalReserva);
                 quarto.setOcupado(true);
             }
             return reserva;

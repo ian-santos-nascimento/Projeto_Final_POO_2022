@@ -1,0 +1,43 @@
+[
+Reserva:
+Numero do Quarto = 101
+Ocupado = true
+Andar = 1
+Numero de Pessoas = 1
+
+Hospede:
+Nome = Kleber
+Ocupacao = Desenvolvedor
+CPF = 604.858.780-54
+Data de Nascimento = Sat Mar 29 00:00:00 AMT 2003
+Endereco = Rua alguma coisa
+Valor: 100
+, 
+Reserva:
+Numero do Quarto = 102
+Ocupado = true
+Andar = 1
+Numero de Pessoas = 2
+
+Hospede:
+Nome = Ricardo
+Ocupacao = Analista de Sistemas
+CPF = 841.536.580-22
+Data de Nascimento = Sat May 20 00:00:00 AMT 2000
+Endereco = Rua alguma coisa
+Valor: 200
+, 
+Reserva:
+Numero do Quarto = 104
+Ocupado = true
+Andar = 1
+Numero de Pessoas = 3
+
+Hospede:
+Nome = Jerson
+Ocupacao = Desempregado
+CPF = 082.908.340-55
+Data de Nascimento = Mon Oct 20 00:00:00 AMT 1980
+Endereco = Rua alguma coisa
+Valor: 300
+]

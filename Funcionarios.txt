@@ -1,0 +1,6 @@
+
+Funcionario:
+Nome: Joao
+Salario: 2000.0
+Inicio do Turno: 06:30
+Fim do Turno: 18:30
