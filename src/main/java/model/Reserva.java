@@ -71,7 +71,8 @@ public class Reserva implements ReservarQuarto {
     @Override
     public Integer calcuarTotalHospeadgem(Quarto quarto, Date inicioOcupacao, Date fimOcupacao) {
         //Diaria:R$100,00 FIXO * qtdPessoasQuarto * diasTotais
-        Integer diasHospedados = inicioOcupacao.compareTo(fimOcupacao);
+        Integer diasHospedados = inicioOcupacao.compareTo(fimOcupacao); //MUDAR ISSO QUE TA DANDO ERRADO
+        System.out.println(diasHospedados + "INICIO:"+ inicioOcupacao + "FIM:"+fimOcupacao);
         Integer diaria = 100;
         Integer qtdPessoasQuarto = quarto.getNumeroPessoas();
         return diasHospedados * diaria * qtdPessoasQuarto;

@@ -39,72 +39,55 @@ public class Main {
         List<Quarto> quartos = List.of(quarto1, quarto2, quarto3, quarto4, quarto5, quarto6, quarto7, quarto8, quarto9, quarto10, quarto11, quarto12);
 
 
-        //Criacao de Hospede
-        Hospede hospede1 = new Hospede("Kleber", "Desenvolvedor", "604.858.780-54",transformarData("29/03/2003") , "Rua alguma coisa");
-        Hospede hospede2 = new Hospede("Ricardo", "Analista de Sistemas", "841.536.580-22",transformarData("20/05/2000") , "Rua alguma coisa");
-        Hospede hospede3 = new Hospede("Jerson", "Desempregado", "082.908.340-55",transformarData("20/10/1980") , "Rua alguma coisa");
+        //Criacao de Hospedes
+        Hospede hospede1 = new Hospede("Kleber", "Desenvolvedor", "604.858.780-54", transformarData("29/03/2003"), "Rua alguma coisa");
+        Hospede hospede2 = new Hospede("Ricardo", "Analista de Sistemas", "841.536.580-22", transformarData("20/05/2000"), "Rua alguma coisa");
+        Hospede hospede3 = new Hospede("Jerson", "Desempregado", "082.908.340-55", transformarData("20/10/1980"), "Rua alguma coisa");
 
 
-        //Criação de Reservas
-        Quarto quartoEscolhido1 = procurarQuartoDisponivel(quartos, 1);
-        if(quartoEscolhido1 != null){
-            Reserva reserva1 = new Reserva(quartoEscolhido1, hospede1, new Date(), transformarData(LocalDate.now().plusDays(5).toString()));
-            System.out.println("Reserva Realizada! Quarto numero:" + quartoEscolhido1.getNumeroQuarto());
-            quartoEscolhido1.setOcupado(true);
-        } else{
-            System.out.println("Não existem quartos disponíveis para a quantidade de pessoas escolhida");
-        }
-
-
-        Quarto quartoEscolhido2 = procurarQuartoDisponivel(quartos, 2);
-        if(quartoEscolhido2 != null){
-            Reserva reserva2 = new Reserva(quartoEscolhido2, hospede2, new Date(), transformarData(LocalDate.now().plusDays(5).toString()));
-            System.out.println("Reserva Realizada! Quarto numero:" + quartoEscolhido2.getNumeroQuarto());
-            quartoEscolhido2.setOcupado(true);
-        } else{
-            System.out.println("Não existem quartos disponíveis para a quantidade de pessoas escolhida");
-        }
-
-        Quarto quartoEscolhido3 = procurarQuartoDisponivel(quartos, 3);
-        if(quartoEscolhido3 != null){
-            Reserva reserva3 = new Reserva(quartoEscolhido3, hospede3, new Date(), transformarData(LocalDate.now().plusDays(5).toString()));
-            System.out.println("Reserva Realizada! Quarto numero:" + quartoEscolhido3.getNumeroQuarto());
-            quartoEscolhido3.setOcupado(true);
-        } else{
-            System.out.println("Não existem quartos disponíveis para a quantidade de pessoas escolhida");
-        }
-
-
+        //Criacao de Reservas
+        Reserva reserva1 = realizarReserva(quartos, hospede1, 1);
+        Reserva reserva2 = realizarReserva(quartos, hospede2, 2);
+        Reserva reserva3 = realizarReserva(quartos, hospede3, 3);
 
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public static Date transformarData(String data) {
         try {
-            System.out.println("[transformarData]"+df.parse(data));
+            System.out.println("[transformarData]" + df.parse(data));
             return df.parse(data);
         } catch (ParseException e) {
             return null;
         }
     }
 
-    public static Quarto procurarQuartoDisponivel(List<Quarto> quartos, Integer qtdPessoasProQuarto){
-        List<Quarto> quartosDisponivel =  quartos.stream().filter(quarto -> quarto.getNumeroPessoas().equals(qtdPessoasProQuarto) && !quarto.isOcupado())
+    public static Quarto procurarQuartoDisponivel(List<Quarto> quartos, Integer qtdPessoasProQuarto) {
+        List<Quarto> quartosDisponivel = quartos.stream().filter(quarto -> quarto.getNumeroPessoas().equals(qtdPessoasProQuarto) && !quarto.isOcupado())
                 .collect(Collectors.toList());
-        if(quartosDisponivel.isEmpty())
+        if (quartosDisponivel.isEmpty())
             return null;
         else
             return quartosDisponivel.get(0);
+    }
+
+    public static Reserva realizarReserva(List<Quarto> quartos, Hospede hospede, Integer qtdPessoas) {
+        Quarto quarto = procurarQuartoDisponivel(quartos, qtdPessoas);
+        if (quarto != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            calendar.add(Calendar.DATE, 5);
+            Reserva reserva = new Reserva(quarto, hospede, new Date(), calendar.getTime());
+            Integer totalReserva = reserva.calcuarTotalHospeadgem(quarto, reserva.getInicioOcupacao(), reserva.getFimOcupacao());
+            if (reserva.verificarDocumentos(hospede.getDataNascimento())) {
+                System.out.println("Reserva Realizada! Quarto numero:" + quarto.getNumeroQuarto() + "- o total será: R$:" + totalReserva);
+                quarto.setOcupado(true);
+            }
+            return reserva;
+        } else {
+            System.out.println("Não existem quartos disponíveis para a quantidade de pessoas escolhida");
+            return null;
+        }
     }
 }
